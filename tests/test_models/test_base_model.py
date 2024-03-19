@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" """
+""" Unittest for the AirBnB project """
 from models.base_model import BaseModel
 import unittest
 import datetime
@@ -9,10 +9,10 @@ import os
 
 
 class test_basemodel(unittest.TestCase):
-    """ """
+    """test case for the base_model object"""
 
     def __init__(self, *args, **kwargs):
-        """ """
+        """function to initialize the Args and kwargs"""
         super().__init__(*args, **kwargs)
         self.name = 'BaseModel'
         self.value = BaseModel
@@ -24,7 +24,7 @@ class test_basemodel(unittest.TestCase):
     def tearDown(self):
         try:
             os.remove('file.json')
-        except:
+        except FileNotFoundError:
             pass
 
     def test_default(self):
@@ -40,7 +40,7 @@ class test_basemodel(unittest.TestCase):
         self.assertFalse(new is i)
 
     def test_kwargs_int(self):
-        """ """
+        """ test for kwargs initialization """
         i = self.value()
         copy = i.to_dict()
         copy.update({1: 2})
